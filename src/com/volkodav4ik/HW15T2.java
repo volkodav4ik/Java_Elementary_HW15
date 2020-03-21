@@ -35,13 +35,19 @@ public class HW15T2 {
         ListNode head = createAndFillListNode();
         System.out.print("Input: ");
         System.out.println(head.toString());
-        deleteDuplicates(head);
+        try {
+            head = deleteDuplicates(head);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.print("Output: ");
         System.out.println(head.toString());
-
     }
 
-    private static void deleteDuplicates(ListNode head) {
+    private static ListNode  deleteDuplicates(ListNode head) throws Exception {
+        if (head == null){
+            throw new Exception("Object can't be null");
+        }
         ListNode tmp = head;
         while (tmp.next != null) {
             if (tmp.getValue() == tmp.next.getValue()) {
@@ -50,6 +56,7 @@ public class HW15T2 {
                 tmp = tmp.next;
             }
         }
+        return head;
     }
 
 
